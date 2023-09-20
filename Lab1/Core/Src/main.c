@@ -19,7 +19,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-
+#include "software_timer.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -91,12 +91,40 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-    /* USER CODE END WHILE */
+    setTimer1(500); //RED
+    setTimer2(200);//YELLOW
+    setTimer3(300);//GREEN
+    while (1)
+    {
+     if(timer1_flag==0) {
+  	   HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET);
+  	   HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin,GPIO_PIN_SET);
+  	   HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_SET);
+     }
 
-    /* USER CODE BEGIN 3 */
-  }
+     else if(timer2_flag==0) {
+     	   HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);
+     	   HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_RESET);
+     	   HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_SET);
+        }
+
+     else  {
+     	   HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);
+     	   HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_SET);
+     	   HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_RESET);
+        }
+
+      /* USER CODE END WHILE */
+
+      /* USER CODE BEGIN 3 */
+     if ( timer1_flag ==1 && timer2_flag ==1 && timer3_flag==1) {
+      setTimer1 (500) ;
+      setTimer2 (200) ;
+      setTimer3 (300) ;
+      }
+      timerRun();
+  	HAL_Delay(10);
+    }
   /* USER CODE END 3 */
 }
 
