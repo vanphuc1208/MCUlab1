@@ -280,12 +280,18 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  setTimer1(300);//state1
+  /*state1: red(3s), green(3s)//timer1(3s)
+      state2: red(2s), yellow (2s) //timer2(2s)
+      state3:green(3s), red(3s)
+      state4: yellow(2s), red(2s)
+     */
+       setTimer1(300);//state1
        setTimer2(200);//state2
        setTimer3(300);//state3
        setTimer4(200);//state4
        while (1)
        {
+
         if(timer1_flag==0) {
      	   //TrafficLight1
      		   HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET);
@@ -295,6 +301,11 @@ int main(void)
      	   	   HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, GPIO_PIN_SET);
      	   	   HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin,GPIO_PIN_SET);
      	   	   HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, GPIO_PIN_RESET);
+     	   	   if(timer1_counter%100==0)
+     	   		   {
+     	   		     display7SEG2(timer1_counter/100);
+     	   		     display7SEG1(timer1_counter/100 +2);
+     	   		   }
      	   }
 
         else if (timer2_flag==0) {
@@ -306,6 +317,10 @@ int main(void)
      	       HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, GPIO_PIN_SET);
      	       HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin,GPIO_PIN_RESET);
      	       HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, GPIO_PIN_SET);
+     	      if(timer2_counter%100==0) {
+     	    	  display7SEG2(timer2_counter/100);
+     	    	  display7SEG1(timer2_counter/100);
+     	      }
         }
         else if(timer3_flag==0) {
      	   //TrafficLight1
@@ -316,6 +331,11 @@ int main(void)
      		    HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, GPIO_PIN_RESET);
      		    HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin,GPIO_PIN_SET);
      		    HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, GPIO_PIN_SET);
+     		   if(timer3_counter%100==0)
+     			   {
+     			   display7SEG1(timer3_counter/100);
+     			  display7SEG2(timer3_counter/100+2);
+     			   }
      	   }
 
 
@@ -328,6 +348,11 @@ int main(void)
      	       	HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, GPIO_PIN_RESET);
      	       	HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin,GPIO_PIN_SET);
      	       	HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, GPIO_PIN_SET);
+     	       if(timer4_counter%100==0)
+     	    	   {
+     	    	    display7SEG1(timer4_counter/100);
+     	    	   display7SEG2(timer4_counter/100);
+     	    	   }
 
            }
 
@@ -335,13 +360,13 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+        timerRun();
         if ( timer1_flag ==1 && timer2_flag ==1 && timer3_flag==1 && timer4_flag==1) {
          setTimer1 (300) ;
          setTimer2 (200) ;
          setTimer3(300);
          setTimer4(200);
          }
-         timerRun();
      	HAL_Delay(10);
  }
   /* USER CODE END 3 */
