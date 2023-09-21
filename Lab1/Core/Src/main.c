@@ -304,7 +304,7 @@ int main(void)
      	   	   if(timer1_counter%100==0)
      	   		   {
      	   		     display7SEG2(timer1_counter/100);
-     	   		     display7SEG1(timer1_counter/100 +2);
+     	   		     display7SEG1(timer1_counter/100 +2);//because red count from 5
      	   		   }
      	   }
 
@@ -334,7 +334,7 @@ int main(void)
      		   if(timer3_counter%100==0)
      			   {
      			   display7SEG1(timer3_counter/100);
-     			  display7SEG2(timer3_counter/100+2);
+     			  display7SEG2(timer3_counter/100+2);//because red count from 5
      			   }
      	   }
 
