@@ -151,13 +151,14 @@ int main(void)
         /* USER CODE END WHILE */
 
         /* USER CODE BEGIN 3 */
+       timerRun();
        if ( timer1_flag ==1 && timer2_flag ==1 && timer3_flag==1 && timer4_flag==1) {
         setTimer1 (300) ;
         setTimer2 (200) ;
         setTimer3(300);
         setTimer4(200);
         }
-        timerRun();
+
     	HAL_Delay(10);
 }
 }
