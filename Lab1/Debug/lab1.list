@@ -1009,7 +1009,7 @@ int main(void)
  8000896:	1ad3      	subs	r3, r2, r3
  8000898:	4618      	mov	r0, r3
  800089a:	f7ff fde3 	bl	8000464 <display7SEG2>
-     	   		     display7SEG1(timer1_counter/100 +2);
+     	   		     display7SEG1(timer1_counter/100 +2);//because red count from 5
  800089e:	4b88      	ldr	r3, [pc, #544]	; (8000ac0 <main+0x2cc>)
  80008a0:	681b      	ldr	r3, [r3, #0]
  80008a2:	4a88      	ldr	r2, [pc, #544]	; (8000ac4 <main+0x2d0>)
@@ -1158,7 +1158,7 @@ int main(void)
  80009c2:	1ad3      	subs	r3, r2, r3
  80009c4:	4618      	mov	r0, r3
  80009c6:	f7ff fbc1 	bl	800014c <display7SEG1>
-     			  display7SEG2(timer3_counter/100+2);
+     			  display7SEG2(timer3_counter/100+2);//because red count from 5
  80009ca:	4b42      	ldr	r3, [pc, #264]	; (8000ad4 <main+0x2e0>)
  80009cc:	681b      	ldr	r3, [r3, #0]
  80009ce:	4a3d      	ldr	r2, [pc, #244]	; (8000ac4 <main+0x2d0>)
