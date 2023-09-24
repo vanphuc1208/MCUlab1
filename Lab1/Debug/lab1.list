@@ -325,6 +325,7 @@ int main(void)
  80002ec:	60bb      	str	r3, [r7, #8]
  80002ee:	2300      	movs	r3, #0
  80002f0:	607b      	str	r3, [r7, #4]
+
   while (1)
   {
 	 	  if (second == 60) {
@@ -386,8 +387,8 @@ int main(void)
  800034e:	68fb      	ldr	r3, [r7, #12]
  8000350:	3301      	adds	r3, #1
  8000352:	60fb      	str	r3, [r7, #12]
-	 	  HAL_Delay(1);
- 8000354:	2001      	movs	r0, #1
+	 	  HAL_Delay(100);
+ 8000354:	2064      	movs	r0, #100	; 0x64
  8000356:	f000 f961 	bl	800061c <HAL_Delay>
 	 	  if (second == 60) {
  800035a:	e7ca      	b.n	80002f2 <main+0x22>
